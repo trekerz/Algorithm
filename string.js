@@ -1,6 +1,7 @@
 // 1.判断回文字符串
 // 去除了非单词字符
-function palindrome(str){
+String.prototype.palindrome = function p(){
+    var str = this;
     // \W匹配任何非单词字符。等价于“[^A-Za-z0-9_]”。
     var re = /[\W_]/g;
     // 将字符串变成小写字符,并干掉除字母数字外的字符
@@ -14,30 +15,32 @@ function palindrome(str){
     if(lowRegStr[0]!=lowRegStr[lowRegStr.length-1])
         return false;
 
-    //递归
-    return palindrome(lowRegStr.slice(1,lowRegStr.length-1));
+    //递归（严格模式下也可用）
+    return p.call(lowRegStr.slice(1,lowRegStr.length-1));
 }
-
+// 示例
 var str = 'abuyryuba.';
-console.log(palindrome(str));
+console.log(str.palindrome());
 
 
 // 2.反转字符串（方法一）
 // 反向遍历字符串
-function reverseString(str){
+String.prototype.reverseString1 = function (){
+    var str = this;
     var tmp = '';
     for(var i=str.length-1;i>=0;i--)
         tmp += str[i];
     return tmp;
 }
-
+// 示例
 var str = 'live for building something.';
-console.log(reverseString(str));
+console.log(str.reverseString1());
 
 
 // 3.反转字符串（方法二）
 // 转化成array再反转
-function reverseString2(str){
+String.prototype.reverseString2 = function (){
+    var str = this;
     var arr = str.split("");
     var i = 0,j = arr.length-1;
     while(i<j){
@@ -50,25 +53,26 @@ function reverseString2(str){
     return arr.join("");
     return arr;
 }
-
+// 示例
 var str = 'live for building something.';
-console.log(reverseString2(str));
+console.log(str.reverseString2());
 
 
 // 4.生成指定长度随机字符串
-function randomString(n){
+String.prototype.randomString = function (n){
     var str = 'abcdefghijklmnopqrstuvwxyz0123456789';
     var tmp = '';
     for(var i=0;i<n;i++)
         tmp += str.charAt(Math.floor(Math.random()*str.length));
     return tmp;
 }
-
-console.log(randomString(6));
+// 示例
+console.log(String.prototype.randomString(6));
 
 
 // 5.统计出现次数最多的字母
-function findMaxDuplicateChar(str) {
+String.prototype.findMaxDuplicateChar = function (){
+    var str = this;
     // \W匹配任何非单词字符。等价于“[^A-Za-z0-9_]”。
     var re = /[\W_]/g;
     // 将字符串变成小写字符,并干掉除字母数字外的字符
@@ -102,6 +106,6 @@ function findMaxDuplicateChar(str) {
     }
     return maxChar + '：' + times;
 }
-
+// 示例
 var str = 'live for building something.';
-console.log(findMaxDuplicateChar(str));
+console.log(str.findMaxDuplicateChar());
