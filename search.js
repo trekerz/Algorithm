@@ -53,4 +53,4 @@ Array.prototype.binarySearch_recursion = function bs_r(low, high, key){
 }
 // 示例
 var a = [2,4,6,14,23,25,36,39];
-console.log(a.binarySearch_recursion(2,4,25));
+console.log(a.binarySearch_recursion(2,4,25));   // -1

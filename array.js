@@ -43,7 +43,7 @@ console.log(arr.unique2());   // [1,2,34,342,"1",3,5]
 // 3.数组去重（方法三）
 /**
  * 排序后比较相邻，如果一样则放弃，否则加入到result。这种方法认为1和'1'不同。
- * @return {[Array]} 去重后的新数组
+ * @return {Array} 去重后的新数组
  */
 Array.prototype.unique3 = function (){
     var arr = this;
@@ -64,7 +64,7 @@ console.log(arr.unique3());   // [1,"1",2,3,34,342,5]
 // 4.数组顺序扰乱（方法一）
 /**
  * // 每次随机抽一个数并移动到新数组中。此方法会删除原数组中所有项。
- * @return {[Array]} 随机顺序的新数组
+ * @return {Array} 随机顺序的新数组
  */
 Array.prototype.shuffle1 = function (){
     var arr = this;
@@ -92,7 +92,7 @@ console.log(arr.shuffle1());   // [3,"1",2,5,1]（每次都不同）
 // 5.数组顺序扰乱（方法二）
 /**
  * 前面随机抽数依次跟末尾的数交换，后面依次前移，即：第一次前n个数随机抽一个跟第n个交换，第二次前n-1个数跟第n-1个交换，依次类推。此方法会改变原数组顺序。
- * @return {[Array]} 新顺序的原数组
+ * @return {Array} 新顺序的原数组
  */
 Array.prototype.shuffle2 = function (){
     var arr = this;
@@ -146,8 +146,8 @@ console.log(arr1.intersection(arr2));   // [4,4,1]
 // 8.数组求并集
 /**
  * 连接两个数组并去重。
- * @param  {[Array]} arr 求并的第二个数组
- * @return {[Array]}     并集新数组
+ * @param  {Array} arr 求并的第二个数组
+ * @return {Array}     并集新数组
  */
 Array.prototype.arrUnique = function (arr){
     var a = this.concat(arr);
@@ -169,8 +169,8 @@ console.log(arr1.arrUnique(arr2));   // [4,2,45,67,1,78,23,7,3]
 // 
 /**
  * 利用filter和indexOf方法。
- * @param  {[Array]} a 求差的第二数组
- * @return {[Array]}   差集新数组
+ * @param  {Array} a 求差的第二数组
+ * @return {Array}   差集新数组
  */
 Array.prototype.diff = function (a){
     return this.filter(function (item){
@@ -236,5 +236,5 @@ Array.prototype.getMaxProfit = function (){
     return max - min;
 }
 // 示例
-var arr = [123,23,4,5,2,56];   // 121
-console.log(arr.getMaxProfit());    
+var arr = [123,23,4,5,2,56];
+console.log(arr.getMaxProfit());   // 121
