@@ -1,6 +1,9 @@
 // 1.冒泡排序
 // (1)把数组中的数从左到右两两对比，每次都把大者放在右边，小者放在左边，直到到达数组尾部，算作第一轮对比，这时的数组尾部就是整个数组中的最大者。
 // (2)循环以上过程，经过length-1轮对比后数组就排好序了。
+/**
+ * @return {Array} 原数组排序结果
+ */
 Array.prototype.bubbleSort = function (){
     var arr = this;
     for(var i = 1; i < arr.length; i++){  // 共有(i=length-1)轮排序
@@ -17,13 +20,18 @@ Array.prototype.bubbleSort = function (){
 }
 // 示例
 var a = [100,3,45,7,34,67,8];
-console.log(a.bubbleSort());
+console.log(a.bubbleSort());   // [3,7,8,34,45,67,100]
 
 // 2.快速排序
 // (1)选择左右两个哨兵i、j以及基准数x，分别让i、j从数组头部和尾部向中间前进。
 // (2)当i遇到比x大的数时便停下来，当y遇到比x小的数时也停下来，把这两个数交换位置，之后i、j继续向中间前进。
 // (3)循环第2步，直到i和j碰头为止，这时，把基准数放置在碰头处。此时以基准数为中心可以把数组分成左、右两个部分。
 // (4)单独对左、右两个部分进行步骤1、2、3的处理（递归），直到细分出来的部分只剩一个数为止，此时排序完毕。
+/**
+ * @param  {Number} l 左哨兵索引
+ * @param  {Number} r 右哨兵索引
+ * @return {Array} 原数组排序结果
+ */
 Array.prototype.quickSort = function q(l,r){
     var arr = this;
     if(l < r){
@@ -53,12 +61,15 @@ Array.prototype.quickSort = function q(l,r){
 }
 // 示例
 var a = [3,1,45,2,9,27,16,1,13,2,8];
-console.log(a.quickSort(0,a.length-1));
+console.log(a.quickSort(0,a.length-1));   // [1,1,2,2,3,8,9,13,16,27,45]
 
 
 // 3.选择排序
 // (1)从左边开始进行两数对比，每次对比后取小者再与右边对比，如此一轮之后便会得到数组中的最小者，把此轮对比中的第一个数与所得的最小者置换位置。
 // (2)每轮对比之后向右前进一个数，作为下一轮对比的第一个数，循环步骤1，经过length-1轮对比后数组就变成有序的了。
+/**
+ * @return {Array} 原数组排序结果
+ */
 Array.prototype.selectionSort = function (){
     var arr = this;
     var len = arr.length;
@@ -78,13 +89,16 @@ Array.prototype.selectionSort = function (){
 }
 // 示例
 var a = [3,1,45,2,9,27,16,1,13,2,8];
-console.log(a.selectionSort());
+console.log(a.selectionSort());   // [1,1,2,2,3,8,9,13,16,27,45]
 
 
 // 4.插入排序
 // (1)从第二个数（这里称为当前数）开始，把它轮流跟它前面的每一个数进行对比（这样可以保证当前数之前的所有数是有序的），比当前数大的数都往后移动一位。
 // (2)直到有一个不大于它的数（或此次对比已到达数组头部），这时便停止对比，把当前数插入到该数后面。这样算作一轮对比。这个过程类似扑克牌插牌整理的过程。
 // (3)每轮对比完毕后把当前数向后移动一位，循环步骤1和2，这样一直对比length-1轮后数组就变成有序的了。
+/**
+ * @return {Array} 原数组排序结果
+ */
 Array.prototype.insertionSort = function (){
     var arr = this;
     var len = arr.length;
@@ -102,45 +116,17 @@ Array.prototype.insertionSort = function (){
 }
 // 示例
 var a = [3,1,45,2,9,27,16,1,13,2,8];
-console.log(a.insertionSort());
+console.log(a.insertionSort());   // [1,1,2,2,3,8,9,13,16,27,45]
 
 
-// 5.二路归并
-// （把两个有序数组归并成一个有序数组）
-// (1)从数组头部开始，在每个数组中各取一个数进行对比，把小者推入结果数组，把大者与小者数组中的下一个数进行对比。
-// (2)重复步骤1，直到其中一个数组到达尾部。
-// (3)把还没到达尾部的那个数组剩余的项依次推入结果数组，并返回结果数组。
-Array.prototype.merge = function (left, right) {
-    var result = [],
-        il = 0,
-        ir = 0;
-
-    while (il < left.length && ir < right.length) {
-        if (left[il] < right[ir]) {
-            result.push(left[il++]);
-        } else {
-            result.push(right[ir++]);
-        }
-    }
-    while(left[il]){
-        result.push(left[il++]);
-    }
-    while(right[ir]){
-        result.push(right[ir++]);
-    }
-    return result;
-}
-// 示例
-var a = [3,1,45,2,9,27,16,1,13,2,8];
-var b = [1,3,5,9,16,21,33];
-console.log(Array.prototype.merge(a,b));
-
-
-// 6.堆排序
+// 5.堆排序
 // 包括大顶堆和小顶堆
 // (1)先把数组转化为一个完全二叉树（建立大顶堆）。
 // (2)然后进行堆调整，通过父节点和左右子节点的对比，把大者调整到父节点位置，小者调整到子节点位置。
 // (3)最后按顺序输出这棵二叉树。
+/**
+ * @return {Array} 原数组排序结果
+ */
 Array.prototype.heapSort = function (){
     var arr = this;
 
@@ -192,4 +178,4 @@ Array.prototype.heapSort = function (){
 }
 // 示例
 var a = [3,1,45,2,9,27,16,1,13,2,8];
-console.log(a.heapSort());
+console.log(a.heapSort());   // [1,1,2,2,3,8,9,13,16,27,45]

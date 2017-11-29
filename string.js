@@ -1,5 +1,8 @@
 // 1.判断回文字符串
 // 去除了非单词字符
+/**
+ * @return {Boolean} 是否回文
+ */
 String.prototype.palindrome = function p(){
     var str = this;
     // \W匹配任何非单词字符。等价于“[^A-Za-z0-9_]”。
@@ -20,11 +23,14 @@ String.prototype.palindrome = function p(){
 }
 // 示例
 var str = 'abuyryuba.';
-console.log(str.palindrome());
+console.log(str.palindrome());   // true
 
 
 // 2.反转字符串（方法一）
 // 反向遍历字符串
+/**
+ * @return {String} 反向新字符串
+ */
 String.prototype.reverseString1 = function (){
     var str = this;
     var tmp = '';
@@ -33,12 +39,15 @@ String.prototype.reverseString1 = function (){
     return tmp;
 }
 // 示例
-var str = 'live for building something.';
-console.log(str.reverseString1());
+var str = 'Live for building something.';
+console.log(str.reverseString1());   // .gnihtemos gnidliub rof eviL
 
 
 // 3.反转字符串（方法二）
 // 转化成array再反转
+/**
+ * @return {Array} 反向新字符串
+ */
 String.prototype.reverseString2 = function (){
     var str = this;
     var arr = str.split("");
@@ -51,14 +60,17 @@ String.prototype.reverseString2 = function (){
         j--;
     }
     return arr.join("");
-    return arr;
 }
 // 示例
-var str = 'live for building something.';
-console.log(str.reverseString2());
+var str = 'Live for building something.';
+console.log(str.reverseString2());   // .gnihtemos gnidliub rof eviL
 
 
 // 4.生成指定长度随机字符串
+/**
+ * @param  {Number} n 字符串长度
+ * @return {String}   随机字符串
+ */
 String.prototype.randomString = function (n){
     var str = 'abcdefghijklmnopqrstuvwxyz0123456789';
     var tmp = '';
@@ -67,10 +79,13 @@ String.prototype.randomString = function (n){
     return tmp;
 }
 // 示例
-console.log(String.prototype.randomString(6));
+console.log(String.prototype.randomString(6));  // 8vgmy4
 
 
 // 5.统计出现次数最多的字母
+/**
+ * @return {String} 出现次数最多的字母: 次数
+ */
 String.prototype.findMaxDuplicateChar = function (){
     var str = this;
     // \W匹配任何非单词字符。等价于“[^A-Za-z0-9_]”。
@@ -107,5 +122,5 @@ String.prototype.findMaxDuplicateChar = function (){
     return maxChar + '：' + times;
 }
 // 示例
-var str = 'live for building something.';
-console.log(str.findMaxDuplicateChar());
+var str = 'I can act ppap.';
+console.log(str.findMaxDuplicateChar());   // a,p: 3

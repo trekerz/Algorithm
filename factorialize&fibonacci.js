@@ -1,4 +1,8 @@
 // 1.阶乘（非递归）
+/**
+ * @param  {Number} num 自然数
+ * @return {Number}     阶乘结果
+ */
 function factorialize1(num){
     var result = 1;
     if (num < 2){
@@ -9,9 +13,15 @@ function factorialize1(num){
     }
     return result;
 }
+// 示例
+console.log(factorialize1(5));   // 120
 
 
 // 2.阶乘（递归）
+/**
+ * @param  {Number} num 自然数
+ * @return {Number}     阶乘结果
+ */
 function factorialize2(num){
     if (num < 2){
         return 1;
@@ -19,9 +29,15 @@ function factorialize2(num){
         return num * factorialize2(num-1);
     }
 }
+// 示例
+console.log(factorialize2(5));   // 120
 
 
 // 3.生成斐波那契数列（非递归）
+/**
+ * @param  {Number} n 项数
+ * @return {Array}    数列数组
+ */
 function fibo1(n){
     var fiboarr = [];
     var i = 0;
@@ -35,15 +51,21 @@ function fibo1(n){
     }
     return fiboarr;
 }
+// 示例
+console.log(fibo1(10));   // [0,1,1,2,3,5,8,13,21,34]
 
 
 // 4.生成斐波那契数列（递归）
+/**
+ * @param  {Number} n 项数
+ * @return {Array}    数列数组
+ */
 function fibo2(n){
-    var getfib = function (n){
+    var getfib = function g(n){
         if (n < 2){
             return n;
         }else{
-            return arguments.callee(n-1) + arguments.callee(n-2);
+            return g(n-1) + g(n-2);
         }
     }
 
@@ -53,3 +75,5 @@ function fibo2(n){
     }
     return fiboarr;
 }
+// 示例
+console.log(fibo2(10));   // [0,1,1,2,3,5,8,13,21,34]

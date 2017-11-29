@@ -1,7 +1,9 @@
 // 1.二分查找（非递归）
-// 注意：数组应该是有序数组。
-// key: 要查找的数。
-// 返回: 位置或-1。
+/**
+ * 注意：数组应该是有序数组。
+ * @param  {Number} key 要查找的数
+ * @return {Number}     结果索引 / -1
+ */
 Array.prototype.binarySearch = function (key){
     var arr = this;
     var low = 0,
@@ -20,7 +22,7 @@ Array.prototype.binarySearch = function (key){
 }
 // 示例
 var a = [2,4,6,14,23,25,36,39];
-console.log(a.binarySearch(25));
+console.log(a.binarySearch(25));   // 5
 
 
 // 2.二分查找（递归）
@@ -28,6 +30,12 @@ console.log(a.binarySearch(25));
 // high: 结束查找的位置。
 // key: 要查找的数。
 // 返回: 位置或-1。
+/**
+ * @param  {Number} low  开始查找的位置索引
+ * @param  {Number} high 结束查找的位置索引
+ * @param  {Number} key  要查找的数
+ * @return {Number}      结果索引 / -1
+ */
 Array.prototype.binarySearch_recursion = function bs_r(low, high, key){
     var arr = this;
     if (low > high){
