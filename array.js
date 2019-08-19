@@ -260,3 +260,22 @@ Array.prototype.getMaxProfit = function() {
   }
   return max - min
 }
+
+// 12. 数组降维
+/**
+ * 数组降维
+ * @return {Array} 经过降维的数组
+ *
+ * **示例代码**
+ * ```javascript
+ *    var arr = [123, [23, 4], [5, [2], 56]]
+ *    console.log(arr.flatArray()) // [123, 23, 4, 5, 2, 56]
+ * ```
+ */
+Array.prototype.flatArray = function () {
+  const _arr = Array.prototype.slice.call(this)
+  console.log(_arr)
+  return _arr.reduce((pre, cur) =>
+    cur instanceof Array ? [...pre, ...cur.flatArray()] : [...pre, cur]
+  , [])
+}
