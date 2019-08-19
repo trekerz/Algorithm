@@ -2,6 +2,12 @@
 // 去除了非单词字符
 /**
  * @return {Boolean} 是否回文
+ *
+ * **示例代码**
+ * ```javascript
+ *    var str = 'abuyryuba.'
+ *    console.log(str.palindrome()) // true
+ * ```
  */
 String.prototype.palindrome = function p() {
   var str = this
@@ -19,14 +25,17 @@ String.prototype.palindrome = function p() {
   //递归（严格模式下也可用）
   return p.call(lowRegStr.slice(1, lowRegStr.length - 1))
 }
-// 示例
-var str = 'abuyryuba.'
-console.log(str.palindrome()) // true
 
 // 2.反转字符串（方法一）
 // 反向遍历字符串
 /**
  * @return {String} 反向新字符串
+ *
+ * **示例代码**
+ * ```javascript
+ *    var str = 'Live for building something.'
+ *    console.log(str.reverseString1()) // .gnihtemos gnidliub rof eviL
+ * ```
  */
 String.prototype.reverseString1 = function() {
   var str = this
@@ -34,14 +43,17 @@ String.prototype.reverseString1 = function() {
   for (var i = str.length - 1; i >= 0; i--) tmp += str[i]
   return tmp
 }
-// 示例
-var str = 'Live for building something.'
-console.log(str.reverseString1()) // .gnihtemos gnidliub rof eviL
 
 // 3.反转字符串（方法二）
 // 转化成array再反转
 /**
  * @return {Array} 反向新字符串
+ *
+ * **示例代码**
+ * ```javascript
+ *    var str = 'Live for building something.'
+ *    console.log(str.reverseString2()) // .gnihtemos gnidliub rof eviL
+ * ```
  */
 String.prototype.reverseString2 = function() {
   var str = this
@@ -57,14 +69,16 @@ String.prototype.reverseString2 = function() {
   }
   return arr.join('')
 }
-// 示例
-var str = 'Live for building something.'
-console.log(str.reverseString2()) // .gnihtemos gnidliub rof eviL
 
 // 4.生成指定长度随机字符串
 /**
  * @param  {Number} n 字符串长度
  * @return {String}   随机字符串
+ *
+ * **示例代码**
+ * ```javascript
+ *    console.log(String.prototype.randomString(6)) // 8vgmy4
+ * ```
  */
 String.prototype.randomString = function(n) {
   var str = 'abcdefghijklmnopqrstuvwxyz0123456789'
@@ -73,12 +87,16 @@ String.prototype.randomString = function(n) {
     tmp += str.charAt(Math.floor(Math.random() * str.length))
   return tmp
 }
-// 示例
-console.log(String.prototype.randomString(6)) // 8vgmy4
 
 // 5.统计出现次数最多的字母
 /**
  * @return {String} 出现次数最多的字母: 次数
+ *
+ * **示例代码**
+ * ```javascript
+ *    var str = 'I can act ppap.'
+ *    console.log(str.findMaxDuplicateChar()) // a,p: 3
+ * ```
  */
 String.prototype.findMaxDuplicateChar = function() {
   var str = this
@@ -117,6 +135,3 @@ String.prototype.findMaxDuplicateChar = function() {
   }
   return maxChar + '：' + times
 }
-// 示例
-var str = 'I can act ppap.'
-console.log(str.findMaxDuplicateChar()) // a,p: 3

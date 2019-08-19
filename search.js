@@ -3,6 +3,12 @@
  * 注意：数组应该是有序数组。
  * @param  {Number} key 要查找的数
  * @return {Number}     结果索引 / -1
+ *
+ * **示例代码**
+ * ```javascript
+ *    var a = [2, 4, 6, 14, 23, 25, 36, 39]
+ *    console.log(a.binarySearch(25)) // 5
+ * ```
  */
 Array.prototype.binarySearch = function(key) {
   var arr = this
@@ -20,9 +26,6 @@ Array.prototype.binarySearch = function(key) {
   }
   return -1
 }
-// 示例
-var a = [2, 4, 6, 14, 23, 25, 36, 39]
-console.log(a.binarySearch(25)) // 5
 
 // 2.二分查找（递归）
 // low: 开始查找的位置。
@@ -34,6 +37,12 @@ console.log(a.binarySearch(25)) // 5
  * @param  {Number} high 结束查找的位置索引
  * @param  {Number} key  要查找的数
  * @return {Number}      结果索引 / -1
+ *
+ * **示例代码**
+ * ```javascript
+ *    var a = [2, 4, 6, 14, 23, 25, 36, 39]
+ *    console.log(a.binarySearch_recursion(2, 4, 25)) // -1
+ * ```
  */
 Array.prototype.binarySearch_recursion = function bs_r(low, high, key) {
   var arr = this
@@ -50,6 +59,3 @@ Array.prototype.binarySearch_recursion = function bs_r(low, high, key) {
   }
   return -1
 }
-// 示例
-var a = [2, 4, 6, 14, 23, 25, 36, 39]
-console.log(a.binarySearch_recursion(2, 4, 25)) // -1

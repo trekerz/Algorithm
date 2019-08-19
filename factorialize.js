@@ -2,6 +2,11 @@
 /**
  * @param  {Number} num 自然数
  * @return {Number}     阶乘结果
+ *
+ * **示例代码**
+ * ```javascript
+ *    console.log(factorialize1(5)) // 120
+ * ```
  */
 function factorialize1(num) {
   var result = 1
@@ -13,13 +18,16 @@ function factorialize1(num) {
   }
   return result
 }
-// 示例
-console.log(factorialize1(5)) // 120
 
 // 2.阶乘（递归）
 /**
  * @param  {Number} num 自然数
  * @return {Number}     阶乘结果
+ *
+ * **示例代码**
+ * ```javascript
+ *    console.log(factorialize2(5)) // 120
+ * ```
  */
 function factorialize2(num) {
   if (num < 2) {
@@ -28,5 +36,3 @@ function factorialize2(num) {
     return num * factorialize2(num - 1)
   }
 }
-// 示例
-console.log(factorialize2(5)) // 120

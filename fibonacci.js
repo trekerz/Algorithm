@@ -2,6 +2,11 @@
 /**
  * @param  {Number} n 项数
  * @return {Array}    数列数组
+ *
+ * **示例代码**
+ * ```javascript
+ *    console.log(fibo1(10)) // [0,1,1,2,3,5,8,13,21,34]
+ * ```
  */
 function fibo1(n) {
   var fiboarr = []
@@ -16,13 +21,16 @@ function fibo1(n) {
   }
   return fiboarr
 }
-// 示例
-console.log(fibo1(10)) // [0,1,1,2,3,5,8,13,21,34]
 
 // 2.生成斐波那契数列（递归）
 /**
  * @param  {Number} n 项数
  * @return {Array}    数列数组
+ *
+ * **示例代码**
+ * ```javascript
+ *    console.log(fibo2(10)) // [0,1,1,2,3,5,8,13,21,34]
+ * ```
  */
 function fibo2(n) {
   var getfib = function g(n) {
@@ -39,5 +47,3 @@ function fibo2(n) {
   }
   return fiboarr
 }
-// 示例
-console.log(fibo2(10)) // [0,1,1,2,3,5,8,13,21,34]

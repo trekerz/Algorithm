@@ -2,6 +2,12 @@
 /**
  * 利用hash表。但这种方法会认为1和'1'相同。
  * @return {Array} 去重后的新数组
+ *
+ * **示例代码**
+ * ```javascript
+ *    var arr = [1, 2, 34, 342, '1', 2, 3, 5]
+ *    console.log(arr.unique1()) // [1,2,34,342,3,5]
+ * ```
  */
 Array.prototype.unique1 = function() {
   var arr = this
@@ -16,14 +22,17 @@ Array.prototype.unique1 = function() {
   }
   return data
 }
-// 示例
-var arr = [1, 2, 34, 342, '1', 2, 3, 5]
-console.log(arr.unique1()) // [1,2,34,342,3,5]
 
 // 2. 数组去重（方法二）
 /**
  * 利用数组的indexOf方法。这种方法认为1和'1'不同。
  * @return {Array} 去重后的新数组
+ *
+ * **示例代码**
+ * ```javascript
+ *    var arr = [1, 2, 34, 342, '1', 2, 3, 5]
+ *    console.log(arr.unique2()) // [1,2,34,342,"1",3,5]
+ * ```
  */
 Array.prototype.unique2 = function() {
   var arr = this
@@ -35,14 +44,17 @@ Array.prototype.unique2 = function() {
   }
   return result
 }
-// 示例
-var arr = [1, 2, 34, 342, '1', 2, 3, 5]
-console.log(arr.unique2()) // [1,2,34,342,"1",3,5]
 
 // 3.数组去重（方法三）
 /**
  * 排序后比较相邻，如果一样则放弃，否则加入到result。这种方法认为1和'1'不同。
  * @return {Array} 去重后的新数组
+ *
+ * **示例代码**
+ * ```javascript
+ *    var arr = [1, 2, 34, 342, '1', 2, 3, 5]
+ *    console.log(arr.unique3()) // [1,"1",2,3,34,342,5]
+ * ```
  */
 Array.prototype.unique3 = function() {
   var arr = this
@@ -55,14 +67,17 @@ Array.prototype.unique3 = function() {
   }
   return result
 }
-// 示例
-var arr = [1, 2, 34, 342, '1', 2, 3, 5]
-console.log(arr.unique3()) // [1,"1",2,3,34,342,5]
 
 // 4.数组顺序扰乱（方法一）
 /**
  * // 每次随机抽一个数并移动到新数组中。此方法会删除原数组中所有项。
  * @return {Array} 随机顺序的新数组
+ *
+ * **示例代码**
+ * ```javascript
+ *    var arr = [1, '1', 2, 3, 5]
+ *    console.log(arr.shuffle1()) // [3,"1",2,5,1]（每次都不同）
+ * ```
  */
 Array.prototype.shuffle1 = function() {
   var arr = this
@@ -82,14 +97,17 @@ Array.prototype.shuffle1 = function() {
   }
   return copy
 }
-// 示例
-var arr = [1, '1', 2, 3, 5]
-console.log(arr.shuffle1()) // [3,"1",2,5,1]（每次都不同）
 
 // 5.数组顺序扰乱（方法二）
 /**
  * 前面随机抽数依次跟末尾的数交换，后面依次前移，即：第一次前n个数随机抽一个跟第n个交换，第二次前n-1个数跟第n-1个交换，依次类推。此方法会改变原数组顺序。
  * @return {Array} 新顺序的原数组
+ *
+ * **示例代码**
+ * ```javascript
+ *    var arr = [1, '1', 2, 3, 5]
+ *    console.log(arr.shuffle2()) // ["1",5,3,1,2]（每次都不同）
+ * ```
  */
 Array.prototype.shuffle2 = function() {
   var arr = this
@@ -107,9 +125,6 @@ Array.prototype.shuffle2 = function() {
   }
   return arr
 }
-// 示例
-var arr = [1, '1', 2, 3, 5]
-console.log(arr.shuffle2()) // ["1",5,3,1,2]（每次都不同）
 
 // 6.数组判断（三种方法）
 Array.isArray(arr) // true
@@ -127,22 +142,32 @@ Array.prototype.isItArray = function(arr) {
  * 利用filter和数组自带的indexOf方法。
  * @param  {Array} arr 求交的第二个数组
  * @return {Array}     交集新数组
+ *
+ * **示例代码**
+ * ```javascript
+ *    var arr1 = [4, 2, 45, 67, 2, 4, 1]
+ *    var arr2 = [78, 23, 7, 3, 3, 1, 4]
+ *    console.log(arr1.intersection(arr2)) // [4,4,1]
+ * ```
  */
 Array.prototype.intersection = function(arr) {
   return this.filter(function(item) {
     return arr.indexOf(item) != -1
   })
 }
-// 示例
-var arr1 = [4, 2, 45, 67, 2, 4, 1]
-var arr2 = [78, 23, 7, 3, 3, 1, 4]
-console.log(arr1.intersection(arr2)) // [4,4,1]
 
 // 8.数组求并集
 /**
  * 连接两个数组并去重。
  * @param  {Array} arr 求并的第二个数组
  * @return {Array}     并集新数组
+ *
+ * **示例代码**
+ * ```javascript
+ *    var arr1 = [4, 2, 45, 67, 2, 4, 1]
+ *    var arr2 = [78, 23, 7, 3, 3, 1, 4]
+ *    console.log(arr1.arrUnique(arr2)) // [4,2,45,67,1,78,23,7,3]
+ * ```
  */
 Array.prototype.arrUnique = function(arr) {
   var a = this.concat(arr)
@@ -154,10 +179,6 @@ Array.prototype.arrUnique = function(arr) {
   }
   return result
 }
-// 示例
-var arr1 = [4, 2, 45, 67, 2, 4, 1]
-var arr2 = [78, 23, 7, 3, 3, 1, 4]
-console.log(arr1.arrUnique(arr2)) // [4,2,45,67,1,78,23,7,3]
 
 // 9.数组求差集
 //
@@ -165,16 +186,19 @@ console.log(arr1.arrUnique(arr2)) // [4,2,45,67,1,78,23,7,3]
  * 利用filter和indexOf方法。
  * @param  {Array} a 求差的第二数组
  * @return {Array}   差集新数组
+ *
+ * **示例代码**
+ * ```javascript
+ *    var arr1 = [4, 2, 45, 67, 2, 4, 1]
+ *    var arr2 = [78, 23, 7, 3, 3, 1, 4]
+ *    console.log(arr1.diff(arr2)) // [2,45,67,2]
+ * ```
  */
 Array.prototype.diff = function(a) {
   return this.filter(function(item) {
     return a.indexOf(item) == -1
   })
 }
-// 示例
-var arr1 = [4, 2, 45, 67, 2, 4, 1]
-var arr2 = [78, 23, 7, 3, 3, 1, 4]
-console.log(arr1.diff(arr2)) // [2,45,67,2]
 
 // 10.二路归并
 // （把两个有序数组归并成一个有序数组）
@@ -185,6 +209,13 @@ console.log(arr1.diff(arr2)) // [2,45,67,2]
  * @param  {Array} left  要归并的数组
  * @param  {Array} right 要归并的数组
  * @return {Array}       归并后的新数组
+ *
+ * **示例代码**
+ * ```javascript
+ *    var a = [3, 1, 45, 2, 9, 27, 16, 1, 13, 2, 8]
+ *    var b = [1, 3, 5, 9, 16, 21, 33]
+ *    console.log(Array.prototype.merge(a, b)) // [1,3,3,1,5,9,16,21,33,45,2,9,27,16,1,13,2,8]
+ * ```
  */
 Array.prototype.merge = function(left, right) {
   var result = [],
@@ -206,15 +237,17 @@ Array.prototype.merge = function(left, right) {
   }
   return result
 }
-// 示例
-var a = [3, 1, 45, 2, 9, 27, 16, 1, 13, 2, 8]
-var b = [1, 3, 5, 9, 16, 21, 33]
-console.log(Array.prototype.merge(a, b)) // [1,3,3,1,5,9,16,21,33,45,2,9,27,16,1,13,2,8]
 
 // 11.数字数组中最大差值
 /**
  * 找到最大值和最小值。
  * @return {Number} 最大值与最小值之差
+ *
+ * **示例代码**
+ * ```javascript
+ *    var arr = [123, 23, 4, 5, 2, 56]
+ *    console.log(arr.getMaxProfit()) // 121
+ * ```
  */
 Array.prototype.getMaxProfit = function() {
   var arr = this
@@ -227,6 +260,3 @@ Array.prototype.getMaxProfit = function() {
   }
   return max - min
 }
-// 示例
-var arr = [123, 23, 4, 5, 2, 56]
-console.log(arr.getMaxProfit()) // 121
