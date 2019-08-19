@@ -4,23 +4,26 @@
 /**
  * @return {Array} 原数组排序结果
  */
-Array.prototype.bubbleSort = function (){
-    var arr = this;
-    for(var i = 1; i < arr.length; i++){  // 共有(i=length-1)轮排序
-        for(var j = 0; j < arr.length-i; j++){  // 每轮排序有(j=length-i)次对比
-            var temp = 0;
-            if(arr[j] > arr[j+1]){  // 每次对比都把大者放在小者的右边
-                temp = arr[j];
-                arr[j] = arr[j+1];
-                arr[j+1] = temp;
-            }
-        }
+Array.prototype.bubbleSort = function() {
+  var arr = this
+  for (var i = 1; i < arr.length; i++) {
+    // 共有(i=length-1)轮排序
+    for (var j = 0; j < arr.length - i; j++) {
+      // 每轮排序有(j=length-i)次对比
+      var temp = 0
+      if (arr[j] > arr[j + 1]) {
+        // 每次对比都把大者放在小者的右边
+        temp = arr[j]
+        arr[j] = arr[j + 1]
+        arr[j + 1] = temp
+      }
     }
-    return arr;
+  }
+  return arr
 }
 // 示例
-var a = [100,3,45,7,34,67,8];
-console.log(a.bubbleSort());   // [3,7,8,34,45,67,100]
+var a = [100, 3, 45, 7, 34, 67, 8]
+console.log(a.bubbleSort()) // [3,7,8,34,45,67,100]
 
 // 2.快速排序
 // (1)选择左右两个哨兵i、j以及基准数x，分别让i、j从数组头部和尾部向中间前进。
@@ -32,37 +35,36 @@ console.log(a.bubbleSort());   // [3,7,8,34,45,67,100]
  * @param  {Number} r 右哨兵索引
  * @return {Array} 原数组排序结果
  */
-Array.prototype.quickSort = function q(l,r){
-    var arr = this;
-    if(l < r){
-        var i = l, j = r, x = arr[i];
-        // 一轮i与j的相互改写，直到ij碰头
-        while(i<j){
-            // 哨兵j向左移动
-            while(i<j && arr[j]>x)
-                j--;
-            if(i<j)
-                //这里用i++，因为被换过来的必然比x小，赋值后直接让i自加，不用再比较，可以提高效率
-                arr[i++] = arr[j];
-            
-            // 哨兵i向右移动
-            while(i<j && arr[i]<x)
-                i++;
-            if(i<j)
-                //这里用j--，因为被换过来的必然比x大，赋值后直接让j自减，不用再比较，可以提高效率
-                arr[j--] = arr[i];
-        }
-        arr[i] = x;  //一轮调换进行完毕
-        
-        q.call(arr, l, i-1);
-        q.call(arr, i+1, r);
+Array.prototype.quickSort = function q(l, r) {
+  var arr = this
+  if (l < r) {
+    var i = l,
+      j = r,
+      x = arr[i]
+    // 一轮i与j的相互改写，直到ij碰头
+    while (i < j) {
+      // 哨兵j向左移动
+      while (i < j && arr[j] > x) j--
+      if (i < j)
+        //这里用i++，因为被换过来的必然比x小，赋值后直接让i自加，不用再比较，可以提高效率
+        arr[i++] = arr[j]
+
+      // 哨兵i向右移动
+      while (i < j && arr[i] < x) i++
+      if (i < j)
+        //这里用j--，因为被换过来的必然比x大，赋值后直接让j自减，不用再比较，可以提高效率
+        arr[j--] = arr[i]
     }
-    return arr;
+    arr[i] = x //一轮调换进行完毕
+
+    q.call(arr, l, i - 1)
+    q.call(arr, i + 1, r)
+  }
+  return arr
 }
 // 示例
-var a = [3,1,45,2,9,27,16,1,13,2,8];
-console.log(a.quickSort(0,a.length-1));   // [1,1,2,2,3,8,9,13,16,27,45]
-
+var a = [3, 1, 45, 2, 9, 27, 16, 1, 13, 2, 8]
+console.log(a.quickSort(0, a.length - 1)) // [1,1,2,2,3,8,9,13,16,27,45]
 
 // 3.选择排序
 // (1)从左边开始进行两数对比，每次对比后取小者再与右边对比，如此一轮之后便会得到数组中的最小者，把此轮对比中的第一个数与所得的最小者置换位置。
@@ -70,27 +72,27 @@ console.log(a.quickSort(0,a.length-1));   // [1,1,2,2,3,8,9,13,16,27,45]
 /**
  * @return {Array} 原数组排序结果
  */
-Array.prototype.selectionSort = function (){
-    var arr = this;
-    var len = arr.length;
-    var minIndex, temp;
-    for (var i = 0; i < len - 1; i++) {
-        minIndex = i;
-        for (var j = i + 1; j < len; j++) {
-            if (arr[j] < arr[minIndex]) {     //寻找最小的数
-                minIndex = j;                 //将最小数的索引保存
-            }
-        }
-        temp = arr[i];
-        arr[i] = arr[minIndex];
-        arr[minIndex] = temp;
+Array.prototype.selectionSort = function() {
+  var arr = this
+  var len = arr.length
+  var minIndex, temp
+  for (var i = 0; i < len - 1; i++) {
+    minIndex = i
+    for (var j = i + 1; j < len; j++) {
+      if (arr[j] < arr[minIndex]) {
+        //寻找最小的数
+        minIndex = j //将最小数的索引保存
+      }
     }
-    return arr;
+    temp = arr[i]
+    arr[i] = arr[minIndex]
+    arr[minIndex] = temp
+  }
+  return arr
 }
 // 示例
-var a = [3,1,45,2,9,27,16,1,13,2,8];
-console.log(a.selectionSort());   // [1,1,2,2,3,8,9,13,16,27,45]
-
+var a = [3, 1, 45, 2, 9, 27, 16, 1, 13, 2, 8]
+console.log(a.selectionSort()) // [1,1,2,2,3,8,9,13,16,27,45]
 
 // 4.插入排序
 // (1)从第二个数（这里称为当前数）开始，把它轮流跟它前面的每一个数进行对比（这样可以保证当前数之前的所有数是有序的），比当前数大的数都往后移动一位。
@@ -99,25 +101,24 @@ console.log(a.selectionSort());   // [1,1,2,2,3,8,9,13,16,27,45]
 /**
  * @return {Array} 原数组排序结果
  */
-Array.prototype.insertionSort = function (){
-    var arr = this;
-    var len = arr.length;
-    var preIndex, current;
-    for (var i = 1; i < len; i++) {
-        preIndex = i - 1;
-        current = arr[i];
-        while(preIndex >= 0 && arr[preIndex] > current) {
-            arr[preIndex+1] = arr[preIndex];
-            preIndex--;
-        }
-        arr[preIndex+1] = current;
+Array.prototype.insertionSort = function() {
+  var arr = this
+  var len = arr.length
+  var preIndex, current
+  for (var i = 1; i < len; i++) {
+    preIndex = i - 1
+    current = arr[i]
+    while (preIndex >= 0 && arr[preIndex] > current) {
+      arr[preIndex + 1] = arr[preIndex]
+      preIndex--
     }
-    return arr;
+    arr[preIndex + 1] = current
+  }
+  return arr
 }
 // 示例
-var a = [3,1,45,2,9,27,16,1,13,2,8];
-console.log(a.insertionSort());   // [1,1,2,2,3,8,9,13,16,27,45]
-
+var a = [3, 1, 45, 2, 9, 27, 16, 1, 13, 2, 8]
+console.log(a.insertionSort()) // [1,1,2,2,3,8,9,13,16,27,45]
 
 // 5.堆排序
 // 包括大顶堆和小顶堆
@@ -127,55 +128,55 @@ console.log(a.insertionSort());   // [1,1,2,2,3,8,9,13,16,27,45]
 /**
  * @return {Array} 原数组排序结果
  */
-Array.prototype.heapSort = function (){
-    var arr = this;
+Array.prototype.heapSort = function() {
+  var arr = this
 
-    var len;  //因为声明的多个函数都需要数据长度，所以把len设置成为全局变量
+  var len //因为声明的多个函数都需要数据长度，所以把len设置成为全局变量
 
-    // 建立大顶堆
-    function buildMaxHeap(arr){
-        len = arr.length;
-        for (var i = Math.floor(len/2); i >= 0; i--) {
-            heapify(arr, i);
-        }
+  // 建立大顶堆
+  function buildMaxHeap(arr) {
+    len = arr.length
+    for (var i = Math.floor(len / 2); i >= 0; i--) {
+      heapify(arr, i)
+    }
+  }
+
+  // 堆调整
+  function heapify(arr, i) {
+    var left = 2 * i + 1,
+      right = 2 * i + 2,
+      largest = i
+
+    if (left < len && arr[left] > arr[largest]) {
+      largest = left
     }
 
-    // 堆调整
-    function heapify(arr, i){
-        var left = 2 * i + 1,
-            right = 2 * i + 2,
-            largest = i;
-
-        if (left < len && arr[left] > arr[largest]) {
-            largest = left;
-        }
-
-        if (right < len && arr[right] > arr[largest]) {
-            largest = right;
-        }
-
-        if (largest != i) {
-            swap(arr, i, largest);
-            heapify(arr, largest);
-        }
+    if (right < len && arr[right] > arr[largest]) {
+      largest = right
     }
 
-    function swap(arr, i, j){
-        var temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
-    };
-
-    // 开始排序
-    buildMaxHeap(arr);
-
-    for (var i = arr.length-1; i > 0; i--) {
-        swap(arr, 0, i);
-        len--;
-        heapify(arr, 0);
+    if (largest != i) {
+      swap(arr, i, largest)
+      heapify(arr, largest)
     }
-    return arr;
+  }
+
+  function swap(arr, i, j) {
+    var temp = arr[i]
+    arr[i] = arr[j]
+    arr[j] = temp
+  }
+
+  // 开始排序
+  buildMaxHeap(arr)
+
+  for (var i = arr.length - 1; i > 0; i--) {
+    swap(arr, 0, i)
+    len--
+    heapify(arr, 0)
+  }
+  return arr
 }
 // 示例
-var a = [3,1,45,2,9,27,16,1,13,2,8];
-console.log(a.heapSort());   // [1,1,2,2,3,8,9,13,16,27,45]
+var a = [3, 1, 45, 2, 9, 27, 16, 1, 13, 2, 8]
+console.log(a.heapSort()) // [1,1,2,2,3,8,9,13,16,27,45]
