@@ -131,6 +131,41 @@
     })
   }
 
+
+  // 静态all
+  // 所有promise返回成功才返回成功
+  Promise.all = function(promises = []) {
+    var retArr = new Array(promises.length)
+    var resolveCount = 0
+
+    return new Promise((resolve, reject) => {
+      promises.forEach((p, index) => {
+        // p有可能不是Promise，要用Promise.resolve先处理一次
+        Promise.resolve(p).then(
+          value => {
+            retArr[index] = value
+            resolveCount++
+            if (resolveCount === promises.length) {
+              resolve(retArr)
+            }
+          },
+          reason => {
+            reject(reason)
+          }
+        )
+      })
+    })
+  }
+
+  // 静态race
+  Promise.race = function(promises = []) {
+    return new Promise((resolve, reject) => {
+      promises.forEach(p => {
+        Promise.resolve(p).then(resolve, reject)
+      })
+    })
+  }
+
   // 异步模拟函数
   function simulateAsync(fn) {
     setTimeout(fn)
