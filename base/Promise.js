@@ -1,6 +1,7 @@
 /**
  * 自定义Promise
  * @since 2020-02-29
+ * @url https://www.ituring.com.cn/article/66566
  */
 (function() {
 
